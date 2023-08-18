@@ -1,5 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-router.get('/', (req,res)=>{res.status(200).json('Create Question')})
+import  {askQuestion}  from "../controllers/question.js";
+
+router.post('/ask', askQuestion)
 export default router
