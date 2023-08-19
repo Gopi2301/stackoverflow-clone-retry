@@ -1,0 +1,63 @@
+.nav {
+    height: 50px;
+
+    &__list {
+        display:flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: space-evenly;
+    }
+
+    &__item {
+    &:nth-child(2){
+        flex-grow: 1;
+    }
+        &--logo {
+            // 
+        }
+    }
+
+    &__link {
+        
+        // Your styles for the nav links
+        // ...
+
+        &-logo {
+            height: 50px;
+            
+        }
+
+        &--search {
+        // 
+        }
+    }
+
+    &__search {
+        // Your styles for the search component
+        // ...
+    }
+
+    &__search-icon {
+        // Your styles for the search icon
+        // ...
+    }
+
+    &__search-input {
+        // Your styles for the search input
+        // ...
+    }
+
+    &__link-text {
+        // 
+    }
+
+    &__login-button {
+        // Your styles for the login button
+        // ...
+    }
+
+    &__logout-button {
+        // Your styles for the logout button
+        // ...
+    }
+}
