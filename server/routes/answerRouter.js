@@ -1,4 +1,6 @@
 import express from "express";
-const router = express.Router();
-router.get('/',(req,res)=>res.status(200).json('Create Answer'))
-export default router
+import {postAnswer} from '../controllers/Answer.js'
+
+const router= express.Router();
+router.patch('/post/:id', postAnswer);
+export default router;
