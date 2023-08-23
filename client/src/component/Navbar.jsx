@@ -6,7 +6,7 @@ import '../styles/components/--navbar.scss'
 const Navbar = () => {
     return (
         <div className='navbar'>
-
+            Navbar
         </div >
     )
 }
