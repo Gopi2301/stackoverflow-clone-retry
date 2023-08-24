@@ -1,0 +1,72 @@
+.nav {
+    height: 60px;
+    width: 100%;
+    -webkit-box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
+-moz-box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
+box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
+    &__list {
+        display:flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+
+    }
+
+    &__item {
+    &:nth-child(2){
+        flex-grow: 1;
+        height: 100%;
+    }
+        &--logo {
+            // 
+        }
+    }
+
+    &__link {
+        display: inline-block;
+        width: 100%;
+        
+        // Your styles for the nav links
+        // ...
+
+        &-logo {
+            height: 50px;
+            
+        }
+
+        &--search {
+            width: 90%;
+            padding: 0.4rem;
+        }
+    }
+
+    &__search {
+        // Your styles for the search component
+        // ...
+    }
+
+    &__search-icon {
+        // Your styles for the search icon
+        // ...
+    }
+
+    &__search-input {
+        // Your styles for the search input
+        // ...
+    }
+
+    &__link-text {
+        // 
+    }
+
+    &__login-button {
+        // Your styles for the login button
+        // ...
+    }
+
+    &__logout-button {
+        // Your styles for the logout button
+        // ...
+    }
+}
