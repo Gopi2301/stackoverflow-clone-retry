@@ -7,6 +7,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import EmailIcon from '@mui/icons-material/Email';
 import '../styles/pages/--login.scss'
 import { useNavigate } from 'react-router-dom';
+import SideBar from '../component/SideBar';
 
 
 const Login = () => {
@@ -35,7 +36,8 @@ const Login = () => {
     }
     return (
         <>
-            <Navbar />
+
+            <SideBar />
             <Box className='form'
                 component="form"
 

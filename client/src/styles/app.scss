@@ -1,2 +1,3 @@
-// @import './base/reset'
-// @use './base/reset'
+@use './base/reset';
+@use './layouts/--Container.scss';
+@use './pages/--questionList.scss';

@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import '../src/styles/app.scss'
-import Navbar from './component/navbar'
+import SideBar from './component/SideBar'
+
 
 function App() {
 
 
   return (
     <>
-      <Navbar />
+      <SideBar />
     </>
   )
 }

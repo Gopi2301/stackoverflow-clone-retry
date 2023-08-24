@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../component/navbar'
+import '../styles/pages/--questionList.scss'
 import axios from 'axios'
+import SideBar from '../component/SideBar';
+import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import { width } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
 
 const QuestionList = () => {
     const [response, setResponse] = useState([]);
     useEffect(() => {
         fetchData();
-    }, []); // Empty dependency array to fetch data only once when component mounts
-
+    }, []);
+    const navigate = useNavigate()
+    const handleCreateQuestion = () => {
+        navigate('/question/ask')
+    }
     const fetchData = async () => {
         try {
             const question = await axios.get('http://localhost:4000/question/');
@@ -19,7 +26,28 @@ const QuestionList = () => {
     console.log(response)
     return (
         <div>
-            <Navbar />
+            <SideBar />
+            <div className='container'>
+                <Button component="div" onClick={() => handleCreateQuestion()} variant='contained'>Create Question</Button>
+                {response.map((ques) => (
+                    <Card >
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {ques.questionTitle}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                {ques.questionBody}
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small">Share</Button>
+                            <Button size="small">Answer</Button>
+
+                        </CardActions>
+                    </Card>
+                ))}
+
+            </div>
 
         </div>
     )
