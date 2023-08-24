@@ -1,16 +1,11 @@
 .nav {
-    height: 60px;
-    width: 100%;
-    -webkit-box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
--moz-box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
-box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
+    height: 50px;
+
     &__list {
         display:flex;
     flex-direction: row;
     align-items: center;
-    list-style: none;
-    gap: 1rem;
-
+    // justify-content: space-evenly;
     }
 
     &__item {
@@ -24,8 +19,6 @@ box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
     }
 
     &__link {
-        display: inline-block;
-        width: 100%;
         
         // Your styles for the nav links
         // ...
@@ -36,8 +29,7 @@ box-shadow: 0px 15px 10px -9px rgba(0,0,0,0.21);
         }
 
         &--search {
-            width: 90%;
-            padding: 0.4rem;
+        // 
         }
     }
 
