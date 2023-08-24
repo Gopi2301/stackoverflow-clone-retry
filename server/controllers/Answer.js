@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 import question from '../models/question.js'
 
+
+
+
 export const postAnswer = async(req, res)=>{
     const {id : _id}= req.params; 
     const {noOfAnswers, answerBody, userAnswered}= req.body;

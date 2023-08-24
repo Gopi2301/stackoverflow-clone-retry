@@ -5,6 +5,7 @@ import SideBar from '../component/SideBar';
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 import { width } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import Question from './Question';
 
 const QuestionList = () => {
     const [response, setResponse] = useState([]);
@@ -41,7 +42,7 @@ const QuestionList = () => {
                         </CardContent>
                         <CardActions>
                             <Button size="small">Share</Button>
-                            <Button size="small">Answer</Button>
+                            <Button onClick={() => { navigate(`/answer/post/${ques._id}`) }} size="small">Answer</Button>
 
                         </CardActions>
                     </Card>

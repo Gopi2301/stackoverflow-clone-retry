@@ -22,6 +22,16 @@ export const deleteQuestion = async(req,res)=>{
         
     }
 }
+export const questionData= async(req,res)=>{
+    const {id}= req.params;
+    const questionId = await question.findById(id)
+    try {
+        if(!questionId){return res.status(404).json('Question not found')}
+        res.status(200).json(questionId)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
 export const getAllQuestion = async(req,res)=>{
     try {
         const questions = await question.find();

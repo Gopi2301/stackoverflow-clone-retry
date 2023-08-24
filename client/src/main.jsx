@@ -9,6 +9,8 @@ import {
 import Login from './pages/login.jsx';
 import QuestionList from './pages/QuestionList.jsx';
 import CreateQuestion from './pages/CreateQuestion.jsx';
+import Question from './pages/Question.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/question/ask",
     element: <CreateQuestion />
+  },
+  {
+    path: '/answer/post/:id',
+    element: <Question />
   }
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
