@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Login from './pages/login.jsx';
+import QuestionList from './pages/QuestionList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/user/login",
     element: <Login />
+  },
+  {
+    path: "/question/list",
+    element: <QuestionList />
   }
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(

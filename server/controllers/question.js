@@ -22,3 +22,11 @@ export const deleteQuestion = async(req,res)=>{
         
     }
 }
+export const getAllQuestion = async(req,res)=>{
+    try {
+        const questions = await question.find();
+        res.status(200).json(questions)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
