@@ -13,9 +13,9 @@ const SideBar = (props) => {
         setMobileOpen(!mobileOpen);
     };
     const navigate = useNavigate();
-    const handleHomeClick = () => { }
+    const handleHomeClick = () => { navigate('/') }
     const handlePublicClick = () => { }
-    const handleQuestionClick = () => { navigate('/user/login') }
+    const handleQuestionClick = () => { navigate('/question/list') }
     const handleTagsClick = () => { }
     const drawer = (
         <div>
