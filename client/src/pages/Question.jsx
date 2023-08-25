@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import SideBar from '../component/SideBar'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 
 const Single = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [data, setData] = useState({
         questionTitle: '',
         questionBody: '',
@@ -48,7 +49,7 @@ const Single = () => {
                 ))}
 
 
-                <Button variant="contained" size="small">Create Answer</Button>
+                <Button variant="contained" onClick={() => navigate(`/answer/create/${id}`)} size="small">Create Answer</Button>
 
             </div>
         </>

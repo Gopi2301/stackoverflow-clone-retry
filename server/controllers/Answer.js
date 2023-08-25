@@ -20,7 +20,7 @@ export const postAnswer = async(req, res)=>{
         }},{new:true})
         res.status(200).json(updatedQuestion)
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error.message)
     }
 }
 const updateNoOfAnswer = async(_id, noOfAnswer)=>{

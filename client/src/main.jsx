@@ -10,6 +10,7 @@ import Login from './pages/login.jsx';
 import QuestionList from './pages/QuestionList.jsx';
 import CreateQuestion from './pages/CreateQuestion.jsx';
 import Question from './pages/Question.jsx'
+import CreateAnswer from './pages/CreateAnswer.jsx';
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/answer/post/:id',
     element: <Question />
+  },
+  {
+    path: '/answer/create/:id',
+    element: <CreateAnswer />
   }
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
