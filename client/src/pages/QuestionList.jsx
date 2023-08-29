@@ -46,10 +46,11 @@ const QuestionList = () => {
                             <Typography variant="body2" color="text.secondary">
                                 {ques.questionBody}
                             </Typography>
+
                         </CardContent>
                         <CardActions>
                             <Button size="small">Share</Button>
-                            <Button onClick={() => { navigate(`/answer/post/${ques._id}`) }} size="small">Answer</Button>
+                            <Button onClick={() => { navigate(`/answer/post/${ques._id}`) }} size="small">Answer ({ques.answer.length})</Button>
 
                         </CardActions>
                     </Card>
