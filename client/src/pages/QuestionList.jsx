@@ -18,13 +18,20 @@ const QuestionList = () => {
     }
     const fetchData = async () => {
         try {
-            const question = await axios.get('http://localhost:4000/question/');
+            const token = localStorage.getItem('token');
+            const config = {
+                headers: {
+                    "x-auth-token": `Bearer ${token}`
+                }
+            }
+
+            const question = await axios.get('http://localhost:4000/question/', config);
             setResponse(question.data);
         } catch (error) {
             console.log(error);
         }
     }
-    // console.log(response)
+
     return (
         <div>
             <SideBar />

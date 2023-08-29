@@ -7,7 +7,7 @@ try {
     await postQuestion.save()
     res.status(200).json('Question Posted successfully')
 } catch (error) {
-    res.status(404).json("Couldn't post a Question");
+    res.status(401).json("Couldn't post a Question");
 }
 }
 export const deleteQuestion = async(req,res)=>{

@@ -22,7 +22,7 @@ const SideBar = (props) => {
     const handleLogout = () => {
         localStorage.removeItem('name');
         localStorage.removeItem('token');
-        navigate('/question/list')
+        navigate('/user/login')
     }
     const handleTagsClick = () => { }
 

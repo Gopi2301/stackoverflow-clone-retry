@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/question/list",
-    element: <QuestionList />
+    element: <ProtectedRoute><QuestionList /></ProtectedRoute>
   },
   {
     path: "/question/ask",
