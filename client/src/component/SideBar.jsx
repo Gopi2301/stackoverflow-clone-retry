@@ -1,5 +1,5 @@
 import { AppBar, Box, Button, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemText, TextField, Toolbar, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '/logo.svg'
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/components/--Sidebar.scss'
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const SideBar = (props) => {
     const { window } = props;
     const drawerWidth = 240;
-    const [user, setUser] = useState(false);
+    const [user, setUser] = useState(null);
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -15,8 +15,23 @@ const SideBar = (props) => {
     const navigate = useNavigate();
     const handleHomeClick = () => { navigate('/question/list') }
     const handlePublicClick = () => { }
+    const handleLogin = () => {
+        navigate('/user/login')
+    }
     const handleQuestionClick = () => { navigate('/question/ask') }
+    const handleLogout = () => {
+        localStorage.removeItem('name');
+        localStorage.removeItem('token');
+        navigate('/question/list')
+    }
     const handleTagsClick = () => { }
+
+    useEffect(() => {
+        const name = localStorage.getItem('name');
+        setUser(name)
+    }, [localStorage.getItem('name')]);
+
+
     const drawer = (
         <div>
             <img className="logo-img" src="/logo.svg" alt="Logo" />
@@ -72,7 +87,13 @@ const SideBar = (props) => {
 
 
                     <TextField fullWidth id="outlined-basic" label="search..." variant="outlined" />
-                    {user ? <Button variant='contained'>Login</Button> : <Button variant="contained">Logout</Button>}
+                    {
+                        user == null ? (
+                            <Button onClick={() => handleLogin()} variant="contained">Login</Button>
+                        ) : (
+                            <Button onClick={() => handleLogout()} variant="contained">Logout</Button>
+                        )
+                    }
                 </Toolbar>
             </AppBar>
             <Box

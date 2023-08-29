@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import Navbar from '../component/navbar'
+import React, { useState } from 'react';
+import Navbar from '../component/navbar';
 import axios from 'axios';
 import { Box, Button, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility';
@@ -11,11 +11,12 @@ import SideBar from '../component/SideBar';
 
 
 const Login = () => {
-
     const navigate = useNavigate()
+    const [API_data, setAPI_data] = useState('')
     const [showPassword, setShowPassword] = React.useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
+    const [formState, setFormState] = useState('success');
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
@@ -23,14 +24,19 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            await axios.post('http://localhost:4000/user/login', {
+            const response = await axios.post('http://localhost:4000/user/login', {
                 email,
                 password
             }
             )
+            setAPI_data(response.data);
+            console.log(response.data);
+            localStorage.setItem('token', JSON.stringify(response.data.token))
+            localStorage.setItem('name', JSON.stringify(response.data.existingUser.name))
+
             navigate('/question/list')
         } catch (error) {
-            console.log(error)
+            setFormState('error')
         }
 
     }
@@ -72,7 +78,7 @@ const Login = () => {
                     }
                     label="Password"
                 />
-                <Button type="submit" onClick={() => handleLogin()} className='form__submit' fullWidth component="div" variant="contained">Login</Button>
+                <Button type="submit" color={formState == "success" ? "primary" : "error"} onClick={() => handleLogin()} className='form__submit' fullWidth component="div" variant="contained">{formState === "success" ? "Submit" : "Retry"}</Button>
 
             </Box>
         </>

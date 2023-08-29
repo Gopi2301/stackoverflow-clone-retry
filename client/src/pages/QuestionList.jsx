@@ -24,7 +24,7 @@ const QuestionList = () => {
             console.log(error);
         }
     }
-    console.log(response)
+    // console.log(response)
     return (
         <div>
             <SideBar />

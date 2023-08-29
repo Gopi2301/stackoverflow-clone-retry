@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+import ProtectedRoute from './component/ProtectedRoute.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -28,7 +29,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/question/ask",
-    element: <CreateQuestion />
+    element:
+      <ProtectedRoute><CreateQuestion /></ProtectedRoute>
+
   },
   {
     path: '/answer/post/:id',
