@@ -32,9 +32,7 @@ const SideBar = (props) => {
         const name = localStorage.getItem('name');
         setUser(name)
     }, [localStorage.getItem('name')]);
-    const handleProfile = () => {
-        navigate('/profile')
-    }
+    const handleProfile = () => { navigate('/profile') }
 
     const drawer = (
         <div>
@@ -99,14 +97,13 @@ const SideBar = (props) => {
                         color="inherit"
                         onClick={() => handleProfile()}
                     >
-                        <Avatar sx={{ bgcolor: deepOrange[500] }}>{Name[1]}</Avatar>
+                        {user != null ? <Avatar sx={{ bgcolor: deepOrange[500] }}>{Name[1]}</Avatar> : <></>}
+
                     </IconButton>
-                    {
-                        user == null ? (
-                            <Button onClick={() => handleLogin()} variant="contained">Login</Button>
-                        ) : (
-                            <Button onClick={() => handleLogout()} variant="contained">Logout</Button>
-                        )
+                    {user == null ? (
+                        <Button onClick={() => handleLogin()} variant="contained">Login</Button>
+                    ) : (
+                        <Button onClick={() => handleLogout()} variant="contained">Logout</Button>)
                     }
                 </Toolbar>
             </AppBar>
