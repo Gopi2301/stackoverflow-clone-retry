@@ -30,10 +30,10 @@ const Login = () => {
             }
             )
             setAPI_data(response.data);
-
+            console.log(response.data);
             localStorage.setItem('token', JSON.stringify(response.data.token))
             localStorage.setItem('name', JSON.stringify(response.data.existingUser.name))
-
+            localStorage.setItem('email', JSON.stringify(response.data.existingUser.email))
             navigate('/question/list')
         } catch (error) {
             setFormState('error')

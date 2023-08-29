@@ -12,7 +12,7 @@ import QuestionList from './pages/QuestionList.jsx';
 import CreateQuestion from './pages/CreateQuestion.jsx';
 import Question from './pages/Question.jsx'
 import CreateAnswer from './pages/CreateAnswer.jsx';
-
+import Profile from './pages/Profile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: '/answer/create/:id',
     element: <CreateAnswer />
+  },
+  {
+    path: '/profile',
+    element: <Profile />
   }
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(

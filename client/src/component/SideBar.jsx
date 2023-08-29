@@ -1,9 +1,10 @@
-import { AppBar, Box, Button, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemText, TextField, Toolbar, Typography } from '@mui/material';
+import { AppBar, Avatar, Box, Button, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemText, TextField, Toolbar, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Logo from '/logo.svg'
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/components/--Sidebar.scss'
 import { useNavigate } from 'react-router-dom';
+import { deepOrange } from '@mui/material/colors';
 const SideBar = (props) => {
     const { window } = props;
     const drawerWidth = 240;
@@ -13,6 +14,7 @@ const SideBar = (props) => {
         setMobileOpen(!mobileOpen);
     };
     const navigate = useNavigate();
+    const Name = localStorage.getItem('name')
     const handleHomeClick = () => { navigate('/question/list') }
     const handlePublicClick = () => { }
     const handleLogin = () => {
@@ -30,7 +32,9 @@ const SideBar = (props) => {
         const name = localStorage.getItem('name');
         setUser(name)
     }, [localStorage.getItem('name')]);
-
+    const handleProfile = () => {
+        navigate('/profile')
+    }
 
     const drawer = (
         <div>
@@ -87,6 +91,16 @@ const SideBar = (props) => {
 
 
                     <TextField fullWidth id="outlined-basic" label="search..." variant="outlined" />
+                    <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        color="inherit"
+                        onClick={() => handleProfile()}
+                    >
+                        <Avatar sx={{ bgcolor: deepOrange[500] }}>{Name[1]}</Avatar>
+                    </IconButton>
                     {
                         user == null ? (
                             <Button onClick={() => handleLogin()} variant="contained">Login</Button>
