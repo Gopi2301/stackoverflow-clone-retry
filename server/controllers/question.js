@@ -34,7 +34,7 @@ export const questionData= async(req,res)=>{
 }
 export const getAllQuestion = async(req,res)=>{
     try {
-        const questions = await question.find();
+        const questions = await question.find().sort({askedOn:-1});
         res.status(200).json(questions)
     } catch (error) {
         res.status(500).json(error)

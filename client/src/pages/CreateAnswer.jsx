@@ -4,6 +4,7 @@ import { Box, Button, TextField } from '@mui/material'
 import { display } from '@mui/system'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { API } from '../global'
 
 const CreateAnswer = () => {
     const { id } = useParams()
@@ -13,7 +14,7 @@ const CreateAnswer = () => {
     const answerUser = "Admin"
     const handleInput = async () => {
         try {
-            await axios.patch(`http://localhost:4000/answer/post/${id}`, {
+            await axios.patch(`${API}/answer/post/${id}`, {
                 answerBody,
                 answerUser,
                 userId

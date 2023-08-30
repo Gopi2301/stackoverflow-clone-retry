@@ -8,6 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import '../styles/pages/--login.scss'
 import { useNavigate } from 'react-router-dom';
 import SideBar from '../component/SideBar';
+import { API } from '../global';
 
 
 const Login = () => {
@@ -24,7 +25,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:4000/user/login', {
+            const response = await axios.post(`${API}/user/login`, {
                 email,
                 password
             }

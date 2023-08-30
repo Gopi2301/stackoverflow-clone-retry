@@ -6,6 +6,7 @@ import { Button, Card, CardActions, CardContent, Typography } from '@mui/materia
 import { width } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import Question from './Question';
+import { API } from '../global';
 
 const QuestionList = () => {
     const [response, setResponse] = useState([]);
@@ -25,7 +26,7 @@ const QuestionList = () => {
                 }
             }
 
-            const question = await axios.get('http://localhost:4000/question/', config);
+            const question = await axios.get(`${API}/question/`, config);
             setResponse(question.data);
         } catch (error) {
             console.log(error);

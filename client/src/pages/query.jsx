@@ -5,6 +5,8 @@ import { Button, TextField } from '@mui/material'
 import '../styles/pages/--CreateQuestion.scss'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { API } from '../global'
+
 const CreateQuestion = () => {
     const [userPosted, setUserPosted] = useState('Admin')
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ const CreateQuestion = () => {
                 }
             };
 
-            await axios.post('http://localhost:4000/question/ask', requestData, config);
+            await axios.post(`${API}/question/ask`, requestData, config);
 
             navigate('/question/list');
         } catch (error) {

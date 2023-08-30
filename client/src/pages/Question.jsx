@@ -3,6 +3,7 @@ import SideBar from '../component/SideBar'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import { API } from '../global';
 
 const Single = () => {
     const { id } = useParams()
@@ -14,14 +15,14 @@ const Single = () => {
     });
     const fetchQuestion = async () => {
         try {
-            const data = await axios.get(`http://localhost:4000/question/post/${id}`);
+            const data = await axios.get(`${API}/question/post/${id}`);
             setData(data.data)
 
         } catch (error) {
             console.log(error);
         }
     }
-    console.log(data)
+
     useEffect(() => { fetchQuestion() }, []);
     return (
         <>
