@@ -8,7 +8,7 @@ import '../styles/pages/--login.scss'
 import { useNavigate } from 'react-router-dom';
 import SideBar from '../component/SideBar';
 import { API } from '../global';
-
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -21,22 +21,25 @@ const Login = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
+    const [loading, setLoading] = useState(false);
     const handleLogin = async () => {
+        setLoading(true)
         try {
+
             const response = await axios.post(`${API}/user/login`, {
                 email,
                 password
             }
             )
+
             setAPI_data(response.data);
             console.log(response.data);
-            // localStorage.setItem('token', JSON.stringify(response.data.token))
             localStorage.setItem('token', (response.data.token))
             localStorage.setItem('name', JSON.stringify(response.data.existingUser.name))
             localStorage.setItem('email', JSON.stringify(response.data.existingUser.email))
             navigate('/question/list')
         } catch (error) {
+            setLoading(false)
             setFormState('error')
         }
 
@@ -79,8 +82,18 @@ const Login = () => {
                     }
                     label="Password"
                 />
-                <Button type="submit" color={formState == "success" ? "primary" : "error"} onClick={() => handleLogin()} className='form__submit' fullWidth component="div" variant="contained">{formState === "success" ? "Submit" : "Retry"}</Button>
-
+                <LoadingButton
+                    size="small"
+                    type="submit"
+                    className='form__submit'
+                    color={formState == "success" ? "primary" : "error"}
+                    onClick={() => handleLogin()}
+                    loading={loading}
+                    loadingIndicator="Loading…"
+                    fullWidth component="div" variant="contained"
+                >
+                    {formState === "success" ? "Login" : "Retry"}
+                </LoadingButton>
             </Box>
         </>
     )
