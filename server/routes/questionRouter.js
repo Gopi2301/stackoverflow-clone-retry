@@ -5,8 +5,8 @@ import  {askQuestion}  from "../controllers/question.js";
 import { auth } from "../middleware/authMiddle.js";
 
 
-router.post('/ask', askQuestion);
-router.get('/', getAllQuestion);
+router.post('/ask', auth, askQuestion);
+router.get('/', auth,getAllQuestion);
 router.delete('/delete/:id', deleteQuestion);
-router.get('/post/:id',auth, questionData)
+router.get('/post/:id', questionData)
 export default router

@@ -35,7 +35,7 @@ export const login = async(req, res)=>{
         if(!isPasswordCrct){
            return res.status(400).json("Invalid Credentials")
         }
-        const token = jwt.sign({email: existingUser.email, id: existingUser._id},secretKey, {expiresIn: '1hr'})
+        const token = jwt.sign({email: existingUser.email, id: existingUser._id},secretKey)
         res.status(200).json({existingUser, token})
     } catch (error) {
         res.status(500).send(error.message)
