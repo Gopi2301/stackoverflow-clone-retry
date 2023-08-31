@@ -1,57 +1,55 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Box, Button, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material'
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import EmailIcon from '@mui/icons-material/Email';
+import React, { useState } from 'react'
 import '../styles/pages/--login.scss'
-import { useNavigate } from 'react-router-dom';
-import SideBar from '../component/SideBar';
+import SideBar from '../component/SideBar'
+import { Box, Button, IconButton, InputAdornment, InputLabel, TextField } from '@mui/material'
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from '@mui/icons-material/Visibility';
+import EmailIcon from '@mui/icons-material/Email';
+import LoadingButton from '@mui/lab/LoadingButton/LoadingButton';
+import axios from 'axios';
 import { API } from '../global';
-import LoadingButton from '@mui/lab/LoadingButton';
+import { useNavigate } from 'react-router-dom';
+// import { useAsyncValue } from 'react-router-dom';
 
-const Login = () => {
-    const navigate = useNavigate()
-    const [API_data, setAPI_data] = useState('')
+const Signup = () => {
     const [showPassword, setShowPassword] = React.useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    const [formState, setFormState] = useState('success');
+    const [loading, setLoading] = useState(false);
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const navigate = useNavigate()
+    const [password, setPassword] = React.useState('');
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-    const handleSignup = () => { navigate('/user/signup') }
-    const [loading, setLoading] = useState(false);
-    const handleLogin = async () => {
+    const handleSubmit = async () => {
         setLoading(true)
         try {
-
-            const response = await axios.post(`${API}/user/login`, {
+            const response = await axios.post(`${API}/user/signup`, {
+                name,
                 email,
                 password
             }
             )
-
-            setAPI_data(response.data);
             console.log(response.data);
-            localStorage.setItem('token', (response.data.token))
-            localStorage.setItem('name', JSON.stringify(response.data.existingUser.name))
-            localStorage.setItem('email', JSON.stringify(response.data.existingUser.email))
-            navigate('/question/list')
+            navigate('/user/login')
         } catch (error) {
             setLoading(false)
-            setFormState('error')
+            alert(error.response.data.message)
         }
 
     }
     return (
         <>
-
             <SideBar />
             <Box className='form'
-                component="form"
-            >
+                component="form">
+                <InputLabel htmlFor="outlined-name">Name</InputLabel>
+                <TextField fullWidth onChange={(event) => setName(event.target.value)}
+                    id="outlined-name"
+                    type="text"
+
+                />
                 <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
                 <TextField fullWidth onChange={(event) => setEmail(event.target.value)}
                     id="outlined-adornment-email"
@@ -62,7 +60,6 @@ const Login = () => {
                         </InputAdornment>
                     }
                 />
-                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                 <TextField fullWidth onChange={(event) => setPassword(event.target.value)}
                     id="outlined-adornment-password"
                     type={showPassword ? 'text' : 'password'}
@@ -84,18 +81,16 @@ const Login = () => {
                     size="small"
                     type="submit"
                     className='form__submit'
-                    color={formState == "success" ? "primary" : "error"}
-                    onClick={() => handleLogin()}
+
+                    onClick={handleSubmit}
                     loading={loading}
                     loadingIndicator="Loading…"
                     fullWidth component="div" variant="contained"
-                >
-                    {formState === "success" ? "Login" : "Retry"}
+                >SignUp
                 </LoadingButton>
-                <Button onClick={() => handleSignup()} variant="text">Signup</Button>
             </Box>
         </>
     )
 }
 
-export default Login
+export default Signup

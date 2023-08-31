@@ -13,6 +13,7 @@ import CreateQuestion from './pages/CreateQuestion.jsx';
 import Question from './pages/Question.jsx'
 import CreateAnswer from './pages/CreateAnswer.jsx';
 import Profile from './pages/Profile.jsx'
+import Signup from './pages/Signup.jsx'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/user/login",
     element: <Login />
+  },
+  {
+    path: "/user/signup",
+    element: <Signup />
   },
   {
     path: "/question/list",
