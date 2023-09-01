@@ -93,7 +93,13 @@ const Login = () => {
                     {formState === "success" ? "Login" : "Retry"}
                 </LoadingButton>
                 <Button onClick={() => handleSignup()} variant="text">Signup</Button>
+                <div className='credientials'>
+                    <p>Guest Credentials</p>
+                    <p>Email: test@test.com</p>
+                    <p>Password: test</p>
+                </div>
             </Box>
+
         </>
     )
 }
